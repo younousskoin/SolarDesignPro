@@ -32,7 +32,6 @@ import 'views/pv_strings_view.dart';
 import 'views/settings_view.dart';
 import 'views/about_view.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -57,8 +56,8 @@ class SolarDesignApp extends StatelessWidget {
       title: 'SolarDesign Pro',
       debugShowCheckedModeBanner: false,
 
-      // 🌟 THEME GLOBAL PREMIUM
-      theme: AppTheme.lightTheme,
+      // 🌟 THEME GLOBAL PREMIUM (VERT SOLAIRE DASHBOARD)
+      theme: AppTheme.darkTheme,
 
       // 👉 Page d’accueil premium
       home: const HomeView(),

@@ -13,11 +13,11 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.backgroundLight,
+      backgroundColor: AppTheme.darkBackground,
       drawer: const SolarDrawer(),
 
       // ---------------------------------------------------------
-      // APPBAR PREMIUM
+      // APPBAR PREMIUM (DARK + VERT SOLAIRE)
       // ---------------------------------------------------------
       appBar: AppBar(
         elevation: 0,
@@ -26,7 +26,9 @@ class HomeView extends StatelessWidget {
         flexibleSpace: ClipRect(
           child: BackdropFilter(
             filter: ui.ImageFilter.blur(sigmaX: 14, sigmaY: 14),
-            child: Container(color: Colors.white.withOpacity(0.70)),
+            child: Container(
+              color: Colors.black.withOpacity(0.25),
+            ),
           ),
         ),
         title: SlideFadeHorizontal(
@@ -42,7 +44,7 @@ class HomeView extends StatelessWidget {
                     const TextSpan(
                       text: "SolarDesign",
                       style: TextStyle(
-                        color: Colors.black87,
+                        color: Colors.white,
                         fontWeight: FontWeight.w700,
                         fontSize: 22,
                       ),
@@ -50,7 +52,7 @@ class HomeView extends StatelessWidget {
                     TextSpan(
                       text: "Pro",
                       style: TextStyle(
-                        color: AppTheme.blueDeep,
+                        color: AppTheme.solarGreen,
                         fontWeight: FontWeight.w700,
                         fontSize: 22,
                       ),
@@ -64,7 +66,7 @@ class HomeView extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications_none_rounded,
-                color: Colors.black87),
+                color: Colors.white70),
             onPressed: () {},
           ),
           const SizedBox(width: 6),
@@ -86,7 +88,7 @@ class HomeView extends StatelessWidget {
               ),
               children: [
                 // ---------------------------------------------------------
-                // HERO SECTION PREMIUM
+                // HERO SECTION PREMIUM (DARK + VERT SOLAIRE)
                 // ---------------------------------------------------------
                 Container(
                   padding: const EdgeInsets.symmetric(vertical: 40),
@@ -94,15 +96,15 @@ class HomeView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(22),
                     gradient: LinearGradient(
                       colors: [
-                        AppTheme.blueLight.withOpacity(0.12),
-                        AppTheme.blueDeep.withOpacity(0.08),
+                        Colors.white.withOpacity(0.05),
+                        Colors.white.withOpacity(0.02),
                       ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black12.withOpacity(0.05),
+                        color: Colors.black.withOpacity(0.25),
                         blurRadius: 30,
                         offset: const Offset(0, 12),
                       ),
@@ -126,7 +128,7 @@ class HomeView extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: "Manrope",
                             fontSize: 18,
-                            color: Colors.black54,
+                            color: Colors.white70,
                           ),
                         ),
                       ),
@@ -139,7 +141,7 @@ class HomeView extends StatelessWidget {
                             fontFamily: "Manrope",
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
-                            color: AppTheme.blueDeep,
+                            color: AppTheme.solarGreen,
                             letterSpacing: 0.5,
                           ),
                         ),
@@ -157,7 +159,7 @@ class HomeView extends StatelessWidget {
                             style: TextStyle(
                               fontFamily: "Manrope",
                               fontSize: 16,
-                              color: Colors.black45,
+                              color: Colors.white60,
                               height: 1.4,
                             ),
                           ),
@@ -167,13 +169,13 @@ class HomeView extends StatelessWidget {
                       const SizedBox(height: 25),
 
                       // ---------------------------------------------------------
-                      // BOUTON ACTIF
+                      // BOUTON ACTIF (VERT SOLAIRE)
                       // ---------------------------------------------------------
                       FadeSlide(
                         delay: 400,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: AppTheme.blueDeep,
+                            backgroundColor: AppTheme.solarGreen,
                             padding: const EdgeInsets.symmetric(
                               horizontal: 32,
                               vertical: 16,
@@ -190,7 +192,7 @@ class HomeView extends StatelessWidget {
                               fontFamily: "Manrope",
                               fontSize: 17,
                               fontWeight: FontWeight.w600,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                           ),
                         ),
@@ -212,7 +214,7 @@ class HomeView extends StatelessWidget {
                       fontFamily: "Manrope",
                       fontSize: 22,
                       fontWeight: FontWeight.w800,
-                      color: Colors.black87,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -248,7 +250,7 @@ class HomeView extends StatelessWidget {
                       fontFamily: "Manrope",
                       fontSize: 22,
                       fontWeight: FontWeight.w800,
-                      color: Colors.black87,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -284,7 +286,7 @@ class HomeView extends StatelessWidget {
   }
 
   // ---------------------------------------------------------
-  // OUTILS — VERSION PREMIUM
+  // OUTILS — VERSION DARK + VERT SOLAIRE
   // ---------------------------------------------------------
   Widget _toolCard(IconData icon, String title, String subtitle) {
     return FadeSlide(
@@ -294,25 +296,16 @@ class HomeView extends StatelessWidget {
         onTap: () {},
         child: Container(
           padding: const EdgeInsets.all(20),
-          decoration: AppTheme.whiteCard.copyWith(
-            borderRadius: BorderRadius.circular(18),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12.withOpacity(0.05),
-                blurRadius: 25,
-                offset: const Offset(0, 10),
-              ),
-            ],
-          ),
+          decoration: AppTheme.dashboardCard,
           child: Row(
             children: [
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: AppTheme.blueLight.withOpacity(0.15),
+                  color: AppTheme.solarGreen.withOpacity(0.15),
                   borderRadius: BorderRadius.circular(14),
                 ),
-                child: Icon(icon, size: 28, color: AppTheme.blueDeep),
+                child: Icon(icon, size: 28, color: AppTheme.solarGreen),
               ),
               const SizedBox(width: 18),
               Expanded(
@@ -325,7 +318,7 @@ class HomeView extends StatelessWidget {
                         fontFamily: "Manrope",
                         fontSize: 17,
                         fontWeight: FontWeight.w700,
-                        color: Colors.black87,
+                        color: Colors.white,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -334,7 +327,7 @@ class HomeView extends StatelessWidget {
                       style: const TextStyle(
                         fontFamily: "Manrope",
                         fontSize: 13,
-                        color: Colors.black54,
+                        color: Colors.white70,
                       ),
                     ),
                   ],
@@ -343,7 +336,7 @@ class HomeView extends StatelessWidget {
               const Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: 16,
-                color: Colors.black26,
+                color: Colors.white30,
               ),
             ],
           ),
@@ -353,7 +346,7 @@ class HomeView extends StatelessWidget {
   }
 
   // ---------------------------------------------------------
-  // DEMOS — VERSION PREMIUM
+  // DEMOS — VERSION DARK + VERT SOLAIRE
   // ---------------------------------------------------------
   Widget _demoCard(BuildContext context, String title, String route) {
     return FadeSlide(
@@ -364,16 +357,7 @@ class HomeView extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.only(bottom: 12),
           padding: const EdgeInsets.all(18),
-          decoration: AppTheme.whiteCard.copyWith(
-            borderRadius: BorderRadius.circular(16),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black12.withOpacity(0.05),
-                blurRadius: 20,
-                offset: const Offset(0, 8),
-              ),
-            ],
-          ),
+          decoration: AppTheme.dashboardCard,
           child: Row(
             children: [
               Container(
@@ -381,7 +365,7 @@ class HomeView extends StatelessWidget {
                 height: 10,
                 margin: const EdgeInsets.only(right: 14),
                 decoration: BoxDecoration(
-                  color: AppTheme.blueDeep,
+                  color: AppTheme.solarGreen,
                   shape: BoxShape.circle,
                 ),
               ),
@@ -390,7 +374,7 @@ class HomeView extends StatelessWidget {
                   title,
                   style: const TextStyle(
                     fontFamily: "Manrope",
-                    color: Colors.black87,
+                    color: Colors.white,
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
@@ -399,7 +383,7 @@ class HomeView extends StatelessWidget {
               const Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: 16,
-                color: Colors.black26,
+                color: Colors.white30,
               ),
             ],
           ),

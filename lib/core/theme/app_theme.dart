@@ -3,17 +3,24 @@ import 'app_typography.dart';
 
 class AppTheme {
   // ---------------------------------------------------------
-  // 🎨 PALETTE OFFICIELLE SOLARDESIGNPRO
+  // 🎨 PALETTE ORIGINALE (compatibilité avec tes anciennes vues)
   // ---------------------------------------------------------
   static const Color blueDeep = Color(0xFF0A2342);
   static const Color blueMid = Color(0xFF123A63);
   static const Color blueLight = Color(0xFF1B4F85);
   static const Color yellowSolar = Color(0xFFF2C94C);
-
   static const Color backgroundLight = Color(0xFFF5F7FA);
 
   // ---------------------------------------------------------
-  // 🧊 WHITE CARD (INDISPENSABLE POUR TES COURBES)
+  // 🎨 PALETTE VERT SOLAIRE (nouveau thème)
+  // ---------------------------------------------------------
+  static const Color solarGreen = Color(0xFF00C853);
+  static const Color solarGreenLight = Color(0xFF69F0AE);
+  static const Color darkBackground = Color(0xFF0F1A20);
+  static const Color cardBackground = Color(0xFF162228);
+
+  // ---------------------------------------------------------
+  // 🧊 WHITE CARD
   // ---------------------------------------------------------
   static BoxDecoration whiteCard = BoxDecoration(
     color: Colors.white,
@@ -22,22 +29,13 @@ class AppTheme {
       BoxShadow(
         color: Colors.black12.withOpacity(0.05),
         blurRadius: 8,
-        offset: Offset(0, 3),
+        offset: const Offset(0, 3),
       ),
     ],
   );
 
   // ---------------------------------------------------------
-  // 🌈 GRADIENT PREMIUM
-  // ---------------------------------------------------------
-  static const LinearGradient mainGradient = LinearGradient(
-    colors: [blueDeep, blueMid, blueLight],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
-
-  // ---------------------------------------------------------
-  // 🧊 GLASS CARD PREMIUM
+  // 🧊 GLASS CARD (ancienne version conservée)
   // ---------------------------------------------------------
   static BoxDecoration glassCard = BoxDecoration(
     color: Colors.white.withOpacity(0.12),
@@ -50,44 +48,69 @@ class AppTheme {
       BoxShadow(
         color: Colors.black.withOpacity(0.08),
         blurRadius: 20,
-        offset: Offset(0, 8),
+        offset: const Offset(0, 8),
       ),
     ],
   );
 
   // ---------------------------------------------------------
-  // 🌞 THEME LIGHT PREMIUM
+  // 🟩 DASHBOARD CARD (nécessaire pour HomeView)
+  // ---------------------------------------------------------
+  static BoxDecoration dashboardCard = BoxDecoration(
+    color: cardBackground,
+    borderRadius: BorderRadius.circular(16),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black.withOpacity(0.15),
+        blurRadius: 12,
+        offset: const Offset(0, 6),
+      ),
+    ],
+  );
+
+  // ---------------------------------------------------------
+  // 🌞 THEME LIGHT (ancien)
   // ---------------------------------------------------------
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
     scaffoldBackgroundColor: backgroundLight,
     fontFamily: "Manrope",
-
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      surfaceTintColor: Colors.transparent,
-      titleTextStyle: AppTypography.h2,
-      iconTheme: IconThemeData(color: Colors.black87),
-    ),
-
-    textTheme: const TextTheme(
-      bodyMedium: AppTypography.body,
-      bodyLarge: AppTypography.h3,
-      titleLarge: AppTypography.h1,
-      titleMedium: AppTypography.h2,
+    colorScheme: const ColorScheme.light(
+      primary: blueDeep,
+      secondary: blueLight,
     ),
   );
 
   // ---------------------------------------------------------
-  // 🌙 MODE SOMBRE
+  // 🌙 THEME DARK (nouveau + compatible Flutter 3.22+)
   // ---------------------------------------------------------
-  static ThemeData darkTheme = ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: const Color(0xFF0E0E0F),
+  static ThemeData darkTheme = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    scaffoldBackgroundColor: darkBackground,
+    fontFamily: "Manrope",
+
     colorScheme: const ColorScheme.dark(
-      primary: blueLight,
-      secondary: yellowSolar,
+      primary: solarGreen,
+      secondary: solarGreenLight,
+    ),
+
+    cardTheme: const CardThemeData(
+      color: cardBackground,
+      elevation: 4,
+      margin: EdgeInsets.all(8),
+    ),
+
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        fontSize: 22,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
     ),
   );
 }
