@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- 🔥 TITRE PROFESSIONNEL -->
+    <title>SolarDesignPro – Dimensionnement solaire professionnel</title>
+
+    <!-- 🔍 SEO -->
+    <meta
+      name="description"
+      content="SolarDesignPro est une plateforme professionnelle de conception, d’analyse et de dimensionnement des systèmes solaires photovoltaïques."
+    />
+
+    <!-- 🎨 COULEUR DU NAVIGATEUR -->
+    <meta name="theme-color" content="#00C853" />
+
+    <!-- 🌞 FAVICON -->
+    <link rel="icon" type="image/png" href="icons/Icon-192.png" />
+
+    <!-- 🖋️ POLICE MANROPE -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- 💚 STYLE DE LA PAGE DE CHARGEMENT -->
+    <style>
+      body {
+        margin: 0;
+        background: #0f1a20;
+        font-family: "Manrope", sans-serif;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      #loader {
+        text-align: center;
+      }
+
+      #loader img {
+        width: 120px;
+        opacity: 0.9;
+      }
+
+      #loader h1 {
+        margin-top: 18px;
+        font-size: 22px;
+        font-weight: 700;
+        color: #00c853;
+      }
+
+      #loader p {
+        font-size: 14px;
+        opacity: 0.7;
+      }
+    </style>
+
+    <!-- ✅ Base pour GitHub Pages (IMPORTANT) -->
+    <base href="/simpv_system/" />
+  </head>
+
+  <body>
+    <!-- 🌟 PAGE DE CHARGEMENT PREMIUM -->
+    <div id="loader">
+      <img src="assets/logo/solardesignpro.png" alt="SolarDesignPro" />
+      <h1>SolarDesignPro</h1>
+      <p>Chargement de l’application...</p>
+    </div>
+
+    <!-- 🚀 INITIALISATION FLUTTER -->
+    <script src="flutter.js" defer></script>
+    <script>
+      window.addEventListener("load", function () {
+        // 🔧 Désactivation du service worker pour éviter les problèmes de cache
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            for (let registration of registrations) {
+              registration.unregister();
+            }
+          });
+        }
+
+        // 🚀 Chargement du moteur Flutter
+        _flutter.loader
+          .load()
+          .then(function (engineInitializer) {
+            return engineInitializer.initializeEngine();
+          })
+          .then(function (appRunner) {
+            return appRunner.runApp();
+          })
+          .catch(function (error) {
+            console.error("Erreur de chargement Flutter :", error);
+            document.getElementById("loader").innerHTML =
+              "<p style='color:#ff5252'>Erreur de chargement. Veuillez recharger la page.</p>";
+          });
+      });
+    </script>
+  </body>
+</html>
